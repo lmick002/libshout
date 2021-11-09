@@ -15,6 +15,10 @@ pkg_check_modules(SHOUT REQUIRED shout)
 set(LIBRARIES ${SHOUT_LIBRARIES})
 set(INCLUDE_DIRS ${SHOUT_INCLUDE_DIRS})
 
+message("system: ${CMAKE_SYSTEM_PREFIX_PATH}")
+message("shout: ${SHOUT_LIBRARIES}")
+message("system: ${SHOUT_INCLUDE_DIRS}")
+
 if(CMAKE_JS_VERSION)
     set(INCLUDE_DIRS ${INCLUDE_DIRS} ${CMAKE_JS_INC})
     set(LIBRARIES ${LIBRARIES} ${CMAKE_JS_LIB})
