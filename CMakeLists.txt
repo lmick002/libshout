@@ -10,7 +10,7 @@ add_library(shoutjs SHARED src/Shout.cpp)
 
 find_package(PkgConfig)
 
-pkg_check_modules(SHOUT REQUIRED shout)
+pkg_check_modules(SHOUT HINTS /usr/local/opt/libshout /usr/local/Cellar/libshout REQUIRED shout)
 
 set(LIBRARIES ${SHOUT_LIBRARIES})
 set(INCLUDE_DIRS ${SHOUT_INCLUDE_DIRS})
