@@ -15,6 +15,9 @@ pkg_check_modules(SHOUT REQUIRED shout)
 set(LIBRARIES ${SHOUT_LIBRARIES})
 set(INCLUDE_DIRS ${SHOUT_INCLUDE_DIRS})
 
+find_library(SHOUT_LIBRARY shout)
+message("shout library: ${SHOUT_LIBRARY}")
+
 message("system: ${CMAKE_SYSTEM_PREFIX_PATH}")
 message("shout: ${SHOUT_LIBRARIES}")
 message("system: ${SHOUT_INCLUDE_DIRS}")
