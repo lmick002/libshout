@@ -4,20 +4,27 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(NODE_INSTALL_DIR $ENV{NODE_INSTALL_DIR})
 
+# # NAN Library
+set(NODE_INSTALL_NAN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../node_modules/nan)
+
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/mac/lib)
+
 add_library(shoutjs SHARED src/Shout.cpp)
 
 #message(${NODE_INSTALL_DIR})
 
 find_package(PkgConfig)
 
-#pkg_check_modules(SHOUT HINTS /usr/local/Cellar/libshout/2.4.5_2/lib/libshout.dylib REQUIRED shout)
-
 pkg_check_modules(SHOUT REQUIRED shout)
 
 set(LIBRARIES ${SHOUT_LIBRARIES})
 set(INCLUDE_DIRS ${SHOUT_INCLUDE_DIRS})
 
-find_library(SHOUT_LIBRARY shout)
+# find_library(SHOUT_LIBRARY shout)
+find_library(SHOUT_LIBRARY 
+        NAMES shout
+        HINTS "${CMAKE_CURRENT_SOURCE_DIR}/mac/lib"
+)
 message("shout library: ${SHOUT_LIBRARY}")
 
 message("system: ${CMAKE_SYSTEM_PREFIX_PATH}")
